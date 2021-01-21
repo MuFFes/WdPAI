@@ -3,6 +3,7 @@
     padding: 0;
     background: none;
     border: none;
+    text-decoration: none;
 }
 
 html{
@@ -47,7 +48,7 @@ html{
     display: flex;
     background: transparent linear-gradient(270deg, #00000040 0%, #00000066 100%) 0 0 no-repeat padding-box;
     width: 500px;
-    height: 5rem;
+    height: 4rem;
     margin: 0 0 4vh;
     box-shadow: 0 30px 60px #0000004D;
 }
@@ -56,8 +57,8 @@ html{
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     color: rgba(236, 240, 241, .6);
 }
 
@@ -69,7 +70,7 @@ html{
 
 .login__button {
     width: 500px;
-    height: 5rem;
+    height: 4rem;
     font: 2em Lato, sans-serif;
     color: #ECF0F1;
     text-shadow: 3px 3px 8px #000000;
@@ -80,6 +81,87 @@ html{
 .text--orange {
     color: #F1C40F;
 }
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.navbar {
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row-reverse wrap;
+    font: 1.5em Lato, sans-serif;
+    color: #ECF0F1;
+    line-height: 3.5rem;
+}
+
+.navbar__navigation {
+    align-self: flex-start;
+    display: flex;
+    min-width: 55%;
+    box-shadow: 0 30px 40px #00000029;
+}
+
+.navbar__navigation a {
+    color: #ECF0F1;
+    padding: 0 0.5rem;
+    display: block;
+    text-align: center;
+    border-right: 1px solid #ECF0F1;
+}
+
+.navbar__navigation>a:last-child {
+    border: none;
+}
+
+.navbar__navigation>a:hover {
+    background: #8C3B3D;
+}
+
+.navbar__text {
+    background: #2C3E50;
+    flex-grow: 2;
+}
+
+.navbar__icon {
+    background: #2C3E50;
+    flex-grow: 1;
+}
+
+.navbar--active {
+    background: #C0392B;
+}
+
+.navbar__picker {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 30px 40px #00000029;
+    padding: 0 0 0 20px;
+    box-sizing: border-box;
+    background: #D35400;
+}
+
+.select--white {
+    font-size: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    height: 2.5rem;
+    background: #ECF0F1;
+    min-width: 10rem;
+}
+
+.content {
+    margin: 0 3rem 3rem;
+    flex-grow: 1;
+    background: white;
+}
+
+
 
 @media only screen and (max-device-width: 600px) {
     html {
