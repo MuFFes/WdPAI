@@ -8,7 +8,7 @@ class Router {
 
     public static array $routes;
 
-    public static function addRoute($url, $controller, $action, $method) {
+    public static function addRoute($url, $controller, $action = "index", $method = "GET") {
         self::$routes[] = new Route($url, $controller, $action, $method);
     }
 

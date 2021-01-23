@@ -17,6 +17,15 @@ class AppController
         return $this->request === 'POST';
     }
 
+    protected function index() {
+        throw new Exception('Not implemented');
+    }
+
+    protected function redirect($url) {
+        $main_url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$main_url}/{$url}");
+    }
+
     protected function render(string $template = null, array $variables = []) {
         $templatePath = "public/views/{$template}.html";
         $output = 'File not found';
