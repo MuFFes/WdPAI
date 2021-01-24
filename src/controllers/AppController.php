@@ -4,8 +4,7 @@ class AppController
 {
     private $request;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
@@ -17,7 +16,7 @@ class AppController
         return $this->request === 'POST';
     }
 
-    protected function index() {
+    public function index() {
         throw new Exception('Not implemented');
     }
 
@@ -27,7 +26,7 @@ class AppController
     }
 
     protected function render(string $template = null, array $variables = []) {
-        $templatePath = "public/views/{$template}.html";
+        $templatePath = "public/views/{$template}.php";
         $output = 'File not found';
 
         if (file_exists($templatePath)) {

@@ -1,30 +1,40 @@
 <?php
 
+require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/DefaultController.php';
-require_once 'src/routing/Route.php';
 
 
 class Router {
 
-    public static array $routes;
+    public static array $controllerMappings;
 
-    public static function addRoute($url, $controller, $action = "index", $method = "GET") {
-        self::$routes[] = new Route($url, $controller, $action, $method);
+    public static function addController($controllerName, $mapping) {
+        self::$controllerMappings[$mapping] = new $controllerName();
     }
 
     public static function run($url) {
-        foreach (self::$routes as $route) {
-            if ($route->getUrl() == $url && $route->getMethod() == $_SERVER['REQUEST_METHOD']) {
-                $controller = $route->getController();
-                $action = $route->getAction();
+        $urlSegments = explode("/", $url);
+        $action = array_pop($urlSegments);
+        $mapping = implode("/", $urlSegments);
 
-                return $controller->$action();
-            }
+        // Treat first url segment as controller/index if controller of this name exists
+        if ($mapping == "" and array_key_exists($action, self::$controllerMappings)){
+            $mapping = $action;
+            $action = "";
         }
-        return (new DefaultController())->login();
-    }
 
-    public static function init($routeCollection) {
-        self::$routes = $routeCollection;
+        try {
+            if (array_key_exists($mapping, self::$controllerMappings)) {
+                $controller = self::$controllerMappings[$mapping];
+
+                if(method_exists($controller, $action)){
+                    return $controller->$action();
+                }
+                return $controller->index();
+            }
+        } catch (Exception $e) {
+            return (new DefaultController())->index();
+        }
+        return (new DefaultController())->index();
     }
 }
