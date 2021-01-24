@@ -9,6 +9,9 @@ class Router {
     public static array $controllerMappings;
 
     public static function addController($controllerName, $mapping) {
+        if (array_key_exists($mapping, self::$controllerMappings)) {
+            throw new Exception("Controller mapping key already exists");
+        }
         self::$controllerMappings[$mapping] = new $controllerName();
     }
 
