@@ -1,3 +1,7 @@
+:root {
+    --color-base-light: #ECF0F1;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -39,7 +43,7 @@ html{
 
 .login__text {
     font: 7em Lato, sans-serif;
-    color: #ECF0F1;
+    color: var(--color-base-light);
     text-shadow: 4px 4px 8px #00000080;
     margin: 0 40px;
 }
@@ -64,15 +68,33 @@ html{
 
 .login__input>input {
     font: 2em Lato, sans-serif;
-    color: #ECF0F1;
+    color: var(--color-base-light);
     flex-grow: 1;
+}
+
+.login__message {
+    font: 1.5em Lato, sans-serif;
+    visibility: hidden;
+    width: calc(500px - 1rem);
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0 0 4vh;
+    box-shadow: 0 30px 60px #0000004D;
+    color: var(--color-base-light);
+    padding: 0.5rem;
+}
+
+.message--error {
+    visibility: visible;
+    background: transparent linear-gradient(270deg, #C0392B 0%, #8C3B3D 100%) 0 0 no-repeat padding-box;
+    text-shadow: 3px 3px 8px #000000;
 }
 
 .login__button {
     width: 500px;
     height: 4rem;
     font: 2em Lato, sans-serif;
-    color: #ECF0F1;
+    color: var(--color-base-light);
     text-shadow: 3px 3px 8px #000000;
     background: transparent linear-gradient(0deg, #D35400 0%, #F1C40F 100%) 0 0 no-repeat padding-box;
     box-shadow: 0 30px 60px #0000004D;
@@ -96,7 +118,7 @@ html{
     justify-content: space-between;
     flex-flow: row-reverse wrap;
     font: 1.5em Lato, sans-serif;
-    color: #ECF0F1;
+    color: var(--color-base-light);
     line-height: 3.5rem;
 }
 
@@ -108,11 +130,11 @@ html{
 }
 
 .navbar__navigation a {
-    color: #ECF0F1;
+    color: var(--color-base-light);
     padding: 0 0.5rem;
     display: block;
     text-align: center;
-    border-right: 1px solid #ECF0F1;
+    border-right: 1px solid var(--color-base-light);
 }
 
 .navbar__navigation>a:last-child {
@@ -151,7 +173,7 @@ html{
     margin: 0.5rem;
     padding: 0.5rem;
     height: 2.5rem;
-    background: #ECF0F1;
+    background: var(--color-base-light);
     min-width: 10rem;
 }
 
@@ -176,11 +198,11 @@ html{
         text-align: center;
     }
 
-    .login__input {
+    .login__input, .login__button {
         width: 75vw;
     }
 
-    .login__button {
-        width: 75vw;
+    .login__message {
+        width: calc(75vw - 1rem);
     }
 }

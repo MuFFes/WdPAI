@@ -25,13 +25,11 @@ class AppController
         header("Location: {$main_url}/{$url}");
     }
 
-    protected function render(string $template = null, array $variables = []) {
+    protected function render(string $template = null, $viewData=array()) {
         $templatePath = "public/views/{$template}.php";
         $output = 'File not found';
 
         if (file_exists($templatePath)) {
-            extract($variables);
-
             ob_start();
             include $templatePath;
             $output = ob_get_clean();
