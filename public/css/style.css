@@ -90,6 +90,12 @@ html{
     text-shadow: 3px 3px 8px #000000;
 }
 
+.message--success {
+    visibility: visible;
+    background: transparent linear-gradient(270deg, #2ecc71 0%, #27ae60 100%) 0 0 no-repeat padding-box;
+    text-shadow: 3px 3px 8px #000000;
+}
+
 .login__button {
     width: 500px;
     height: 4rem;

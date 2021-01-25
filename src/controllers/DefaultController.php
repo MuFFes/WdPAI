@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__."/../models/User.php";
+require_once __DIR__."/../repository/UserRepository.php";
 
 class DefaultController extends AppController {
 
@@ -14,17 +15,19 @@ class DefaultController extends AppController {
             return $this->render("login");
         }
         else {
-            $email    = htmlentities($_POST["email"]);
-            $password = htmlentities($_POST["password"]);
-            $user = new User($email, $password);
+            $userRepository = new UserRepository();
+            $login    = $_POST["login"];
+            $password = $_POST["password"];
+            $user = $userRepository->getUser($login);
+            if (!$user) {
+                $viewData = array();
+                $viewData["login-message"] = "Username or password is not correct!";
+                $viewData["message-class"] = "message--error";
+                return $this->render("login", $viewData);
+            }
             $viewData = array();
-            $viewData["login-message"] = "Username or password is not correct!";
-            $viewData["message-class"] = "message--error";
-
-//            if ($user !== "test" || $password !== "test"){
-//
-//                return $this->render("login", $viewData);
-//            }
+            $viewData["login-message"] = "Logged in!";
+            $viewData["message-class"] = "message--success";
             return $this->render("login", $viewData);
 
         }
