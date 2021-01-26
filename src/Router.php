@@ -31,9 +31,9 @@ class Router {
             if (array_key_exists($mapping, self::$controllerMappings)) {
                 $controller = self::$controllerMappings[$mapping];
 
-                if(method_exists($controller, $action)){
+                if(method_exists($controller, $action))
                     return $controller->$action();
-                }
+
                 return $controller->index();
             }
         } catch (Exception $e) {

@@ -3,7 +3,8 @@
 require_once 'AppController.php';
 require_once __DIR__."/../models/User.php";
 require_once __DIR__."/../repository/UserRepository.php";
-require_once __DIR__ . "/../Authenticator.php";
+require_once __DIR__ ."/../Authenticator.php";
+require_once __DIR__ ."/../ViewSupport.php";
 
 class DefaultController extends AppController {
 
@@ -17,7 +18,6 @@ class DefaultController extends AppController {
 
         if (self::isGet())
             return $this->render("login");
-
 
         $userRepository = new UserRepository();
         $login    = $_POST["login"];
@@ -37,9 +37,7 @@ class DefaultController extends AppController {
         }
         $_SESSION["userId"] = $user->getId();
         Authenticator::updatePermissions();
-
         return $this->redirect("project/");
-
     }
 
     public function logout() {

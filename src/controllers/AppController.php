@@ -3,6 +3,7 @@
 class AppController
 {
     private $request;
+    protected ?string $tabName = null;
 
     public function __construct() {
         $this->request = $_SERVER['REQUEST_METHOD'];
@@ -28,6 +29,9 @@ class AppController
     protected function render(string $template = null, $viewData=array()) {
         $templatePath = "public/views/{$template}.php";
         $output = 'File not found';
+
+        if ($this->tabName != null)
+            ViewSupport::setActiveTab($this->tabName);
 
         if (file_exists($templatePath)) {
             ob_start();
