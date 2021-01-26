@@ -15,6 +15,8 @@ class Router {
     }
 
     public static function run($url) {
+        session_start();
+
         $urlSegments = explode("/", $url);
         $action = array_pop($urlSegments);
         $mapping = implode("/", $urlSegments);

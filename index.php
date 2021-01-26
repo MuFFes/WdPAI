@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ .'/src/routing/Router.php';
+require __DIR__ . '/src/Router.php';
 
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url( $path, PHP_URL_PATH);
