@@ -12,30 +12,41 @@ class DefaultController extends AppController {
     }
 
     public function login() {
-        if (self::isGet()) {
-            return $this->render("login");
-        }
-        else {
-            $userRepository = new UserRepository();
-            $login    = $_POST["login"];
-            $password = $_POST["password"];
-            // Truncate to max 56 characters - bcrypt max is 72 -> 16 for pepper, max 56 for password itself
-            $password = mb_strimwidth($password, 0, 56);
-
-            // TODO: Creating password:
-            // $password = password_hash($_POST["password"].PASSWORD_PEPPER, PASSWORD_DEFAULT);
-
-            $user = $userRepository->getUser($login);
-            if (!$user || !password_verify($password.PASSWORD_PEPPER, $user->getPassword())) {
-                $viewData = array();
-                $viewData["login-message"] = "Username or password is not correct!";
-                $viewData["message-class"] = "message--error";
-                return $this->render("login", $viewData);
-            }
-            $_SESSION["userId"] = $user->getId();
-            Authenticator::updatePermissions();
-
+        if (Authenticator::isLoggedIn())
             return $this->redirect("project/");
+
+        if (self::isGet())
+            return $this->render("login");
+
+
+        $userRepository = new UserRepository();
+        $login    = $_POST["login"];
+        $password = $_POST["password"];
+        // Truncate to max 56 characters - bcrypt max is 72 -> 16 for pepper, max 56 for password itself
+        $password = mb_strimwidth($password, 0, 56);
+
+        // TODO: Creating password:
+        // $password = password_hash($_POST["password"].PASSWORD_PEPPER, PASSWORD_DEFAULT);
+
+        $user = $userRepository->getUser($login);
+        if (!$user || !password_verify($password.PASSWORD_PEPPER, $user->getPassword())) {
+            $viewData = array();
+            $viewData["login-message"] = "Username or password is not correct!";
+            $viewData["message-class"] = "message--error";
+            return $this->render("login", $viewData);
         }
+        $_SESSION["userId"] = $user->getId();
+        Authenticator::updatePermissions();
+
+        return $this->redirect("project/");
+
+    }
+
+    public function logout() {
+        Authenticator::clearSession();
+        $viewData = array();
+        $viewData["login-message"] = "Logged out successfully!";
+        $viewData["message-class"] = "message--success";
+        return $this->render("login", $viewData);
     }
 }

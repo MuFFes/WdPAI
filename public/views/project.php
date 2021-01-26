@@ -25,7 +25,7 @@
             <a class="navbar__text" href="">Test execution</a>
             <a class="navbar__icon" href=""><i class="fas fa-cog"></i></a>
             <a class="navbar__icon" href=""><i class="fas fa-users"></i></a>
-            <a class="navbar__icon" href=""><i class="fas fa-lock"></i></a>
+            <a class="navbar__icon" href="/logout"><i class="fas fa-lock"></i></a>
         </div>
     </nav>
     <main class="content">
