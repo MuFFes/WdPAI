@@ -323,6 +323,38 @@ html{
         font-size: 24px;
     }
 
+    .container {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .navbar {
+        font: 1.5em Lato, sans-serif;
+        line-height: 2em;
+    }
+
+    .navbar__navigation {
+        width: 100%;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar__navigation a {
+        padding: 0;
+    }
+
+    .navbar__picker, .navbar__text, .navbar__icon {
+        width: 100%;
+    }
+
+    .content, .register__form {
+        align-items: center;
+    }
+
     .login__header {
         flex-direction: column;
     }
