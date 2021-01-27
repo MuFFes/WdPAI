@@ -1,5 +1,5 @@
 :root {
-    --color-base-light: #ECF0F1;
+    --color-clouds: #ecf0f1;
 }
 
 * {
@@ -43,7 +43,7 @@ html{
 
 .login__text {
     font: 7em Lato, sans-serif;
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     text-shadow: 4px 4px 8px #00000080;
     margin: 0 40px;
 }
@@ -68,7 +68,7 @@ html{
 
 .login__input>input {
     font: 2em Lato, sans-serif;
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     flex-grow: 1;
 }
 
@@ -80,7 +80,7 @@ html{
     line-height: 2rem;
     margin: 0 0 4vh;
     box-shadow: 0 30px 60px #0000004D;
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     padding: 0.5rem;
 }
 
@@ -100,7 +100,7 @@ html{
     width: 500px;
     height: 4rem;
     font: 2em Lato, sans-serif;
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     text-shadow: 3px 3px 8px #000000;
     background: transparent linear-gradient(0deg, #D35400 0%, #F1C40F 100%) 0 0 no-repeat padding-box;
     box-shadow: 0 30px 60px #0000004D;
@@ -111,20 +111,23 @@ html{
 }
 
 .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    height: calc(100% - 6rem);
+    width: calc(100% - 6rem);
+    display: grid;
+    grid-gap: 3rem;
+    padding: 3rem;
+    grid-template-columns: minmax(300px, 25%) auto;
+    grid-template-rows: auto 1fr;
 }
 
 .navbar {
-    padding: 3rem;
+    grid-area: 1 / 1 / 2 / 3;
+    justify-self: stretch;
     display: flex;
     justify-content: space-between;
     flex-flow: row-reverse wrap;
     font: 1.5em Lato, sans-serif;
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     line-height: 3.5rem;
 }
 
@@ -136,11 +139,11 @@ html{
 }
 
 .navbar__navigation a {
-    color: var(--color-base-light);
+    color: var(--color-clouds);
     padding: 0 0.5rem;
     display: block;
     text-align: center;
-    border-right: 1px solid var(--color-base-light);
+    border-right: 1px solid var(--color-clouds);
 }
 
 .navbar__navigation>a:last-child {
@@ -172,6 +175,7 @@ html{
     padding: 0 0 0 20px;
     box-sizing: border-box;
     background: #D35400;
+    height: 3.5rem;
 }
 
 .select--white {
@@ -179,16 +183,31 @@ html{
     margin: 0.5rem;
     padding: 0.5rem;
     height: 2.5rem;
-    background: var(--color-base-light);
+    background: var(--color-clouds);
     min-width: 10rem;
 }
 
 .content {
-    margin: 0 3rem 3rem;
-    flex-grow: 1;
-    background: white;
+    grid-area: 2 / 2 / 3 / 3;
+    background: var(--color-clouds);
 }
 
+.navigation {
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    flex-direction: column;
+    font: 1.5em Lato, sans-serif;
+}
+
+.navigation__button {
+    line-height: 3rem;
+    box-sizing: border-box;
+    display: block;
+    padding: 0 0.5rem;
+    color: var(--color-clouds);
+    background: red;
+    margin-bottom: 1.5rem;
+}
 
 
 @media only screen and (max-device-width: 600px) {

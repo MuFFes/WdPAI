@@ -7,5 +7,6 @@ $path = parse_url( $path, PHP_URL_PATH);
 
 Router::addController("DefaultController", "");
 Router::addController("ProjectController", "project");
+Router::addController("UsersController", "users");
 
 Router::run($path);
