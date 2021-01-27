@@ -11,7 +11,10 @@
         <a class="navbar__text" data-name="test-specification" href="">Test specification</a>
         <a class="navbar__text" data-name="test-execution"     href="">Test execution</a>
         <a class="navbar__icon" data-name="settings"   href=""><i class="fas fa-cog"></i></a>
-        <a class="navbar__icon" data-name="users"      href="/users/"><i class="fas fa-users"></i></a>
+        <?php
+            if (Authenticator::checkPermission("user-mgmt"))
+                echo '<a class="navbar__icon" data-name="users" href="/users/"><i class="fas fa-users"></i></a>';
+        ?>
         <a class="navbar__icon" data-name="logout"     href="/logout"><i class="fas fa-lock"></i></a>
     </div>
 </nav>

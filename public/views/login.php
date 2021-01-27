@@ -13,7 +13,7 @@
             cu<span class="text--orange">test</span>
         </section>
     </header>
-    <form class="login__form" action="login" method="POST">
+    <form class="login__form" action="/login" method="POST">
         <div class="login__message <?php if(isset($viewData["message-class"])) { echo $viewData["message-class"]; } ?>">
             <?php if(isset($viewData["login-message"])) { echo $viewData["login-message"]; } ?>
         </div>

@@ -25,9 +25,6 @@ class DefaultController extends AppController {
         // Truncate to max 56 characters - bcrypt max is 72 -> 16 for pepper, max 56 for password itself
         $password = mb_strimwidth($password, 0, 56);
 
-        // TODO: Creating password:
-        // $password = password_hash($_POST["password"].PASSWORD_PEPPER, PASSWORD_DEFAULT);
-
         $user = $userRepository->getUser($login);
         if (!$user || !password_verify($password.PASSWORD_PEPPER, $user->getPassword())) {
             $viewData = array();

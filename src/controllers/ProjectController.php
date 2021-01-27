@@ -15,9 +15,8 @@ class ProjectController extends AppController {
 
     public function project() {
         if (!Authenticator::checkPermission("project-mgmt"))
-            return $this->redirect("login");
+            return $this->redirect("users/");
 
         return $this->render("project");
     }
-
 }
