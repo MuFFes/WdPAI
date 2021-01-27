@@ -18,6 +18,17 @@ class PermissionRepository extends Repository {
         return $statement->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    public function getUserProjects(int $userId) {
+        $projects = array();
+        $statement = $this->database->connect()->prepare('
+            SELECT projectid FROM "View_UserProjects" WHERE "userid"=:userId;
+        ');
+        $statement->bindParam(":userId", $userId, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_COLUMN);
+    }
+
     public function getProjectPermissions(int $userId, int $projectId) {
         throw new Exception("Not implemented");
     }

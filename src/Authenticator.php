@@ -29,6 +29,14 @@ class Authenticator {
         return true;
     }
 
+    public static function getUserProjects(): array {
+        $permissionRepository = new PermissionRepository();
+        if (!isset($_SESSION["userId"]))
+            return array();
+        $projects = $permissionRepository->getUserProjects($_SESSION["userId"]);
+        return($projects);
+    }
+
     public static function clearSession() {
         session_unset();
         session_destroy();

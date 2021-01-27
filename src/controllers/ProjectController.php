@@ -14,7 +14,7 @@ class ProjectController extends AppController {
     }
 
     public function project() {
-        if (!Authenticator::checkPermission("project-mgmt"))
+        if (count(Authenticator::getUserProjects()) == 0)
             return $this->redirect("users/");
 
         return $this->render("project");

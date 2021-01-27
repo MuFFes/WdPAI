@@ -25,15 +25,23 @@ class DefaultController extends AppController {
         // Truncate to max 56 characters - bcrypt max is 72 -> 16 for pepper, max 56 for password itself
         $password = mb_strimwidth($password, 0, 56);
 
+        $viewData = array();
+        $viewData["message-class"] = "message--error";
+
         $user = $userRepository->getUser($login);
         if (!$user || !password_verify($password.PASSWORD_PEPPER, $user->getPassword())) {
-            $viewData = array();
             $viewData["login-message"] = "Username or password is not correct!";
-            $viewData["message-class"] = "message--error";
             return $this->render("login", $viewData);
         }
         $_SESSION["userId"] = $user->getId();
         Authenticator::updatePermissions();
+
+        if (count(Authenticator::getUserProjects()) == 0 && count($_SESSION["globalPermissions"])){
+            $viewData = array();
+            $viewData["login-message"] = "Not enough permissions!";
+            return $this->render("login", $viewData);
+        }
+
         return $this->redirect("project/");
     }
 
