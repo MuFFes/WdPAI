@@ -16,8 +16,8 @@ class UsersController extends AppController {
 
     public function getNavigation() {
         $navigation = array();
-        $navigation["Add user"] = "/users/add";
-        $navigation["Manage users"] = "/users/manage";
+        $navigation[] = array("Add user", "/users/add", "fa-user-plus");
+        $navigation[] = array("Manage users", "/users/manage", "fa-users-cog");
 
         header('Content-type: application/json');
         http_response_code(200);
