@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php include("partials/links.php"); ?>
+    <script src="/public/scripts/login-form-validation.js" defer></script>
     <meta charset="UTF-8">
     <title>Login Page - Open Cutest</title>
 </head>
